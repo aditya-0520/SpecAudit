@@ -1,0 +1,20 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: specaudit
+      POSTGRES_USER: specaudit
+      POSTGRES_PASSWORD: specaudit
+    ports:
+      - "5432:5432"
+    volumes:
+      - specaudit_pgdata:/var/lib/postgresql/data
+      - ./backend/app/db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./backend/app/db/demo_seed.sql:/docker-entrypoint-initdb.d/02-demo.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U specaudit -d specaudit"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+volumes:
+  specaudit_pgdata:

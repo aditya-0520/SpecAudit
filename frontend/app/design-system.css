@@ -1,0 +1,75 @@
+/*
+  design-system.css — SpecAudit-IS supplemental styles
+  Everything foundational lives in globals.css.
+  This file handles: sidebar-registry, count-badge, workspace-head utilities,
+  hero art, and any component-specific refinements.
+*/
+
+/* ─── Workspace page specifics ───────────────────────────────── */
+.workspace .heading-row { margin-bottom: 18px; }
+.count-badge {
+  font-size: 11px;
+  background: #E5EEF4;
+  color: #4A6880;
+  border-radius: 9px;
+  padding: 2px 8px;
+  vertical-align: 2px;
+  margin-left: 4px;
+  font-weight: 650;
+}
+.workspace-summary-label { font-weight: 650; }
+
+/* ─── Hero art styles ────────────────────────────────────────── */
+.hero-accent { color: var(--primary); }
+
+/* ─── Gap count emphasis ─────────────────────────────────────── */
+.gap-count { color: var(--red); font-weight: 700; }
+
+/* ─── Standards grid fallback ────────────────────────────────── */
+@media (min-width: 1101px) {
+  .standards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ─── Compliance table ───────────────────────────────────────── */
+.compliance-table td { vertical-align: middle; }
+
+/* ─── Tender audit page ──────────────────────────────────────── */
+.tender-audit-page { overflow: hidden; }
+
+/* ─── Version page grid ──────────────────────────────────────── */
+.version-page .feature-card:first-child { margin-top: 0; }
+
+/* ─── Progress step — accessible keyboard focus ──────────────── */
+.progress-step:focus-visible .progress-node {
+  outline: 3px solid #7BBDE8;
+  outline-offset: 2px;
+}
+
+/* ─── Report exports ─────────────────────────────────────────── */
+.export-row:first-of-type { border-top: 0; }
+
+/* ─── Checker ────────────────────────────────────────────────── */
+.checker-result .pill { margin-bottom: 6px; }
+
+/* ─── Approval state accessible focus ───────────────────────── */
+.approval-state a:focus-visible { outline: 3px solid #7BBDE8; }
+
+/* ─── Matrix toolbar responsive ─────────────────────────────── */
+@media (max-width: 600px) {
+  .matrix-toolbar { align-items: stretch; }
+  .matrix-toolbar .searchbox { flex-basis: 100%; max-width: none; }
+  .matrix-toolbar .sort-btn { flex: 1 1 0; min-width: 0; }
+}
+
+/* ─── Feature title max-width ────────────────────────────────── */
+.feature-title p { max-width: 740px; }
+
+/* ─── Ingestion pipeline ─────────────────────────────────────── */
+.pipe { flex-wrap: nowrap; }
+
+/* ─── Print basics (if ever needed) ─────────────────────────── */
+@media print {
+  .sidebar, .topbar, .menu-toggle, .modal-backdrop { display: none !important; }
+  .main { margin-left: 0 !important; }
+  .page-wrap { padding: 0 !important; }
+}

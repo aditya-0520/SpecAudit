@@ -1,0 +1,2366 @@
+SPECAUDIT-IS
+AI Tender Auditor for Indian Standards
+SIH 26108 — AI-Powered Indian Standards Recommendation Engine
+
+MASTER CURSOR BUILD PROMPT
+
+You are a senior full-stack engineer, AI/NLP engineer, product designer, and system architect.
+
+I am rebuilding a project called:
+
+SPECAUDIT-IS
+AI Tender Auditor for Indian Standards
+
+This project is being developed for Smart India Hackathon 2026, Problem Statement SIH26108:
+
+"AI-Powered Indian Standards Recommendation Engine"
+
+The goal is to build a production-quality prototype that helps procurement officers analyze tender specifications, identify applicable Indian Standards, verify versions/amendments/certification requirements, detect missing or vague requirements, perform decision-point/coverage analysis, and produce an auditable improved tender draft.
+
+IMPORTANT:
+This is NOT supposed to be a generic chatbot.
+It is an AI-assisted procurement auditing and Indian Standards recommendation platform.
+
+The system must be:
+- explainable
+- traceable
+- evidence-oriented
+- human-in-the-loop
+- auditable
+- modular
+- scalable
+- visually polished
+- suitable for an SIH demonstration
+
+Do not create fake claims about real BIS data.
+When real registry data is unavailable, use clearly labelled DEMO/SAMPLE data.
+Never present synthetic/demo standards as verified real BIS information.
+Every recommendation should have a source/evidence state.
+The officer must remain the final decision-maker.
+
+
+==================================================
+1. CURRENT DEPLOYED PRODUCT THAT MUST BE PRESERVED
+==================================================
+
+There is an existing prototype called SpecAudit-IS.
+
+Its current deployed audit flow is:
+
+01 New Audit
+02 Requirements
+03 Standards
+04 Version & Certification
+05 Tender Audit
+06 Compliance Matrix
+07 Improved Tender
+08 Final Review
+
+The current product positioning is:
+
+"TENDER INTELLIGENCE, MADE AUDITABLE"
+
+Core message:
+
+"Turn ambiguous tenders into auditable specifications."
+
+The current product performs/represents:
+- requirement analysis
+- standards tracing
+- gap detection
+- evidence-linked tender drafting
+- officer review
+- review-ready output
+- local/sample audit data
+- registry snapshot concept
+
+Current deployed prototype includes:
+- Government/procurement dashboard style
+- Review officer identity
+- Registry snapshot date
+- English language selection
+- Sample data / Prototype indicator
+- Local persistence concept
+- New Audit
+- Requirements
+- Standards
+- Version & Certification
+- Tender Audit
+- Compliance Matrix
+- Improved Tender
+- Final Review
+- Recent audits
+- Audit status
+- Decisions covered
+- Registry date
+- Sample audits such as:
+  * LED Lighting Procurement
+  * Industrial Control Panels
+  * Campus Water Pumps
+- "Officer review required for every recommendation"
+- "Every suggestion keeps its source visible and leaves the final decision with the officer."
+
+Preserve these concepts but redesign and improve the UI substantially.
+
+
+==================================================
+2. CORE PROBLEM
+==================================================
+
+Procurement tenders often contain:
+- vague requirements
+- missing technical parameters
+- outdated Indian Standard references
+- incorrect or incomplete standard references
+- missing testing requirements
+- missing certification requirements
+- missing marking requirements
+- missing grades/classes
+- missing safety requirements
+- missing allied/normative standards
+- ambiguous wording
+- open buyer decisions
+
+Thousands of standards may overlap, reference each other, be amended, replaced, or withdrawn.
+
+The system must help officers determine:
+1. What requirements are actually present in the tender?
+2. Which Indian Standards apply?
+3. Which allied/normative/testing/safety standards are relevant?
+4. Which version was valid on the tender date?
+5. Which amendments matter?
+6. Which BIS/QCO/CRS/certification requirements apply?
+7. Which decision points are missing?
+8. Which clauses are vague or non-measurable?
+9. Which requirements are only partially covered?
+10. What should be changed in the tender?
+11. Why did the system make each recommendation?
+12. What did the officer approve/reject/modify?
+
+
+==================================================
+3. PRODUCT PRINCIPLE
+==================================================
+
+The central object of the system is the REQUIREMENT.
+
+Everything must connect back to an individual tender requirement.
+
+Architecture:
+
+TENDER
+  ↓
+REQUIREMENT
+  ↓
+STANDARD
+  ↓
+CLAUSE / EVIDENCE
+  ↓
+VERSION / AMENDMENT
+  ↓
+CERTIFICATION / QCO
+  ↓
+DECISION POINT
+  ↓
+COVERAGE / GAP
+  ↓
+AI RECOMMENDATION
+  ↓
+OFFICER DECISION
+  ↓
+AUDIT LOG
+
+Do not design the application as disconnected pages.
+
+The requirement should be the central entity throughout the system.
+
+
+==================================================
+4. MAIN END-TO-END PIPELINE
+==================================================
+
+Build this overall pipeline:
+
+Tender Upload
+    ↓
+Document Ingestion
+    ↓
+OCR if required
+    ↓
+Language Detection
+    ↓
+Requirement Extraction
+    ↓
+Requirement Normalization
+    ↓
+Decision-Point Identification
+    ↓
+Hybrid Standard Retrieval
+    ↓
+Semantic Retrieval
+    ↓
+Keyword Retrieval
+    ↓
+Multilingual Embedding / Reranking
+    ↓
+Allied / Normative Standard Expansion
+    ↓
+Confidence Check
+    ↓
+Low-confidence correction workflow
+    ↓
+Version & Amendment Validation
+    ↓
+Tender-date validation
+    ↓
+BIS / QCO / CRS / Certification checks
+    ↓
+Clause-level verification
+    ↓
+Decision-Point Audit
+    ↓
+Coverage & Gap Analysis
+    ↓
+Wording Quality Analysis
+    ↓
+Combination / Conflict Check
+    ↓
+IS Checker
+    ↓
+Officer Review
+    ↓
+Improved Tender Draft
+    ↓
+Officer Approval
+    ↓
+Final Audit Report
+    ↓
+Audit Log
+
+
+==================================================
+5. PAGE / ROUTE STRUCTURE
+==================================================
+
+Create a polished application with these main areas:
+
+1. Dashboard
+2. New Audit
+3. Audit Workspace
+4. Requirements
+5. Standards
+6. Version & Certification
+7. Decision-Point Audit
+8. Tender Audit
+9. Compliance Matrix
+10. Improved Tender
+11. Final Review
+12. IS Checker
+13. Standards Registry
+14. Knowledge Base
+15. Audit History / Audit Log
+16. Reports
+17. Evaluation / System Metrics
+18. Settings / Profile
+
+The primary audit workspace should preserve the original eight-step workflow while adding the advanced modules.
+
+
+==================================================
+6. DASHBOARD
+==================================================
+
+Create a professional government/enterprise procurement dashboard.
+
+Header:
+- SPECAUDIT-IS logo/name
+- AI TENDER AUDITOR
+- current officer
+- registry snapshot date
+- language
+- notification/help
+- profile
+
+Sidebar:
+- Dashboard
+- New Audit
+- My Audits
+- Standards Registry
+- IS Checker
+- Knowledge Base
+- Reports
+- Evaluation
+- Settings
+
+Dashboard cards:
+
+Total Audits
+Pending Review
+Approved Audits
+Requirements Analyzed
+Standards Identified
+Open Gaps
+Average Coverage
+
+Recent Audits section.
+
+Each audit should display:
+- tender name
+- product/category
+- audit status
+- coverage/decision score
+- last updated
+- registry snapshot
+- officer
+- number of requirements
+- number of gaps
+
+Filters:
+- All
+- In Progress
+- Needs Review
+- Approved
+- Draft
+- Archived
+
+Search:
+"Search audits, standards, requirements..."
+
+
+==================================================
+7. NEW AUDIT
+==================================================
+
+Allow:
+
+Upload Tender:
+- PDF
+- scanned PDF
+- DOCX
+- text input
+
+Also allow:
+- paste tender text
+- sample tender
+- demo mode
+
+Tender metadata:
+- Tender title
+- Tender ID
+- Organization
+- Product category
+- Tender date
+- Publication date
+- Audit date
+- Language
+- Optional department
+
+Important:
+Tender date is critical because version validation depends on it.
+
+Provide sample/demo tenders:
+1. LED Lighting Procurement
+2. Industrial Control Panels
+3. Campus Water Pumps
+
+Make Demo Mode fast and deterministic.
+
+
+==================================================
+8. DOCUMENT INGESTION
+==================================================
+
+Show a document-processing pipeline:
+
+Document detected
+↓
+Page count
+↓
+OCR
+↓
+Language detection
+↓
+Text extraction
+↓
+Requirement extraction
+
+Show:
+- PDF detected
+- number of pages
+- OCR status
+- languages detected
+- OCR confidence
+- pages with low OCR confidence
+
+Support:
+- English
+- Hindi
+- mixed Hindi/English
+
+OCR architecture should be modular:
+- Tesseract
+- PaddleOCR
+
+Do not require both simultaneously.
+Create an OCR abstraction so providers can be switched.
+
+
+==================================================
+9. REQUIREMENT EXTRACTION
+==================================================
+
+Extract structured requirements from the tender.
+
+Requirement object should include:
+
+id
+text
+normalized_text
+category
+parameter
+value
+unit
+operator
+grade
+rating
+product
+source_page
+source_section
+source_text
+confidence
+status
+
+Categories:
+- Technical
+- Performance
+- Safety
+- Material
+- Testing
+- Certification
+- Environmental
+- Warranty
+- Marking
+- Packaging
+- Delivery
+- Inspection
+- Other
+
+Example:
+
+Original:
+"LED luminaire shall have minimum efficacy of 120 lm/W."
+
+Extract:
+
+Requirement:
+Minimum luminous efficacy
+
+Value:
+120
+
+Unit:
+lm/W
+
+Operator:
+>=
+
+Source:
+Page 7
+
+Confidence:
+0.94
+
+UI should show extracted requirements in a table.
+
+Each requirement must be clickable.
+
+When clicked:
+- highlight source text
+- show source page
+- show extracted fields
+- show confidence
+- show linked standards
+- show decision points
+- show gaps
+
+
+==================================================
+10. PDF + REQUIREMENT SIDE-BY-SIDE VIEW
+==================================================
+
+Create a powerful review interface:
+
+LEFT:
+Tender document/PDF preview
+
+RIGHT:
+Extracted requirements
+
+Clicking a requirement should:
+- select the requirement
+- highlight its source
+- scroll to the relevant page
+- show its extracted metadata
+
+This should become one of the main demonstration features.
+
+
+==================================================
+11. DECISION-POINT AUDIT / DPCA
+==================================================
+
+Implement the Decision-Point Audit.
+
+Do NOT call it "DPCA Engine" in the primary UI.
+
+Use:
+
+"Decision-Point Audit"
+or
+"Coverage & Gap Analysis"
+
+Internally the implementation can use DPCA.
+
+Purpose:
+Identify which buyer decisions are:
+- specified
+- partially specified
+- missing
+- contradictory
+- not applicable
+
+Example checklist for LED lamps:
+
+Product type
+Rated power
+Luminous efficacy
+Colour temperature
+CRI
+IP rating
+Testing method
+BIS certification
+Marking
+Warranty
+
+Show:
+
+Decision Points:
+12
+
+Covered:
+8
+
+Partial:
+2
+
+Missing:
+2
+
+Score:
+8/12 or 67%
+
+Table:
+
+Decision Point
+Tender
+Applicable Standard
+Status
+Evidence
+Action
+
+Status:
+GREEN = covered
+AMBER = partial
+RED = missing
+GRAY = not applicable
+
+Allow officer to review each decision point.
+
+
+==================================================
+12. CHECKLIST ENGINE
+==================================================
+
+Create a reusable Checklist Registry.
+
+A checklist is associated with:
+- product category
+- decision point
+- standard
+- requirement type
+- expected field
+- mandatory/optional
+- evidence
+- expert source
+
+Checklist authoring interface:
+
+Create Checklist
+Edit Checklist
+Version Checklist
+Archive Checklist
+
+Checklist example:
+
+LED Lighting
+- Product type
+- Power
+- Efficacy
+- CCT
+- CRI
+- IP rating
+- Testing
+- Marking
+- Certification
+- Warranty
+
+Checklist evaluation should support:
+- precision
+- recall
+- expert review
+
+Use demo data if actual expert-labelled datasets are unavailable.
+
+
+==================================================
+13. HYBRID STANDARD RETRIEVAL
+==================================================
+
+Implement architecture for:
+
+Keyword Search
++
+Semantic Search
++
+Hybrid Ranking
++
+Cross-Encoder / Multilingual Reranking
+
+Recommended model abstraction:
+- multilingual-e5
+- BGE-M3
+- bge-reranker
+
+Do not hard-code one model.
+Use provider/model configuration.
+
+Retrieval process:
+
+Tender requirement
+↓
+Keyword candidates
++
+Vector candidates
+↓
+Merge
+↓
+Reranker
+↓
+Top standards
+↓
+Evidence generation
+
+Show an optional "Why this result?" panel.
+
+Example:
+
+Standard:
+IS XXXX
+
+Semantic similarity:
+0.94
+
+Keyword match:
+0.89
+
+Reranker:
+0.96
+
+Final confidence:
+96%
+
+Reasons:
+- product category match
+- terminology match
+- technical parameter match
+- standard relationship match
+
+
+==================================================
+14. LOW-CONFIDENCE CORRECTION
+==================================================
+
+If confidence is below configurable threshold:
+
+Show:
+
+"Low-confidence recommendation"
+
+Do not automatically approve it.
+
+Allow:
+- officer correction
+- alternate standards
+- manual search
+- mark not applicable
+
+Record correction in audit log.
+
+
+==================================================
+15. ALLIED / NORMATIVE STANDARDS
+==================================================
+
+For each primary standard, identify:
+
+- allied standards
+- normative references
+- testing standards
+- safety standards
+- referenced standards
+- related certification standards
+
+UI:
+
+Primary Standard
+↓
+Related Standards
+
+Testing
+Safety
+Normative
+Certification
+Referenced
+
+Each linked standard must show:
+- relationship type
+- status
+- version
+- verification state
+
+
+==================================================
+16. STANDARDS PAGE
+==================================================
+
+For each recommendation show:
+
+Standard Number
+Title
+Year
+Status
+Version
+Amendments
+Applicability
+Confidence
+Evidence
+Relationship
+Certification
+Officer Decision
+
+Example:
+
+IS XXXX:2023
+Status: Active
+Confidence: 94%
+Tender applicability: High
+
+Actions:
+- View evidence
+- View version
+- View amendments
+- View related standards
+- Accept
+- Modify
+- Reject
+
+
+==================================================
+17. VERSION + AMENDMENT VALIDATION
+==================================================
+
+This is a core feature.
+
+Given:
+
+Tender date:
+15 March 2024
+
+Referenced standard:
+IS XXXX:2018
+
+Registry:
+2018 original
+2021 amendment
+2023 revised version
+
+Determine:
+
+Which version was valid on the tender date?
+
+Show:
+
+Tender Date
+15 Mar 2024
+
+Referenced Version
+IS XXXX:2018
+
+Applicable Version
+IS XXXX:2023
+
+Result:
+WARNING / VALID / OUTDATED / WITHDRAWN
+
+Provide amendment timeline:
+
+2018 Original
+2021 Amendment 1
+2023 Revised
+2025 Amendment
+
+Do NOT generate version information from an LLM.
+
+Version/status decisions must come from the registry data.
+
+
+==================================================
+18. IS CHECKER
+==================================================
+
+Create a dedicated IS Checker.
+
+Input:
+IS number + year
+
+Output:
+- title
+- status
+- successor
+- closest alternative
+- amendments
+- applicable certification
+- registry date
+- verification status
+
+If not found:
+
+"Unverified Standard Reference"
+
+Never hallucinate a standard.
+
+Example:
+
+IS 99999:2025
+
+Registry status:
+NOT FOUND
+
+Action:
+Officer verification required
+
+
+==================================================
+19. FAKE / UNVERIFIED IS DETECTION
+==================================================
+
+Whenever a tender contains a standard reference:
+
+Validate against registry.
+
+If unavailable:
+
+RED warning:
+"Unverified Standard Reference"
+
+Do not allow unverified standard to appear as "verified".
+
+This is critical for AI trust.
+
+
+==================================================
+20. CERTIFICATION ENGINE
+==================================================
+
+Support:
+
+BIS certification
+QCO
+CRS
+Hallmarking
+
+Do not claim applicability unless supported by the registry/rules.
+
+For each product:
+
+Certification Check
+
+BIS:
+Required / Not Required / Unknown
+
+QCO:
+Applicable / Not Applicable / Unknown
+
+CRS:
+Applicable / Not Applicable / Unknown
+
+Hallmarking:
+Applicable / Not Applicable / Unknown
+
+Also show:
+- source
+- effective date
+- verification date
+- evidence
+
+If a mandatory certification is missing from the tender:
+
+Show:
+
+"Certification requirement may be missing."
+
+Suggested action:
+Add certification clause.
+
+
+==================================================
+21. CLAUSE-LEVEL VERIFICATION
+==================================================
+
+Every important recommendation should have evidence.
+
+Show:
+
+Tender evidence:
+Page 7
+Section 4.2
+
+Standard evidence:
+Clause 5.2
+
+Do not reproduce copyrighted standards text.
+
+Store:
+- standard number
+- clause identifier
+- short factual metadata
+- official source link
+- registry record
+- evidence pointer
+
+Respect copyright.
+
+
+==================================================
+22. COMPLIANCE MATRIX
+==================================================
+
+Create a central compliance matrix.
+
+Columns:
+
+Requirement
+Standard
+Clause
+Version
+Certification
+Coverage
+Evidence
+Risk
+Officer decision
+Action
+
+Example:
+
+Requirement:
+Minimum efficacy >= 120 lm/W
+
+Standard:
+IS XXXX
+
+Clause:
+5.2
+
+Coverage:
+100%
+
+Certification:
+Required
+
+Status:
+Covered
+
+Another:
+
+Requirement:
+Operating temperature
+
+Coverage:
+0%
+
+Status:
+Gap
+
+At top:
+
+Total Requirements
+17
+
+Covered
+9
+
+Partial
+5
+
+Gaps
+3
+
+Coverage:
+71%
+
+Make coverage calculations dynamic.
+
+
+==================================================
+23. COVERAGE & GAP ANALYSIS
+==================================================
+
+For each requirement determine:
+
+Covered
+Partially Covered
+Missing
+Contradictory
+Not Applicable
+Unverified
+
+Gap card:
+
+Gap detected
+
+Requirement:
+Environmental operating temperature
+
+Tender:
+Not specified
+
+Applicable standard:
+IS XXXX
+
+Risk:
+Incomplete technical specification
+
+Suggested action:
+Specify operating temperature range.
+
+Officer:
+Accept / Modify / Reject
+
+
+==================================================
+24. VAGUE WORDING DETECTION
+==================================================
+
+Create a Wording Quality Analyzer.
+
+Detect vague phrases such as:
+
+"good quality"
+"high quality"
+"latest technology"
+"as per relevant standards"
+"suitable material"
+"best quality"
+"high efficiency"
+
+Flag them.
+
+Example:
+
+Original:
+"The product should be of good quality."
+
+Issue:
+Vague / non-measurable wording
+
+Suggested:
+"The product shall comply with [verified applicable standard] and satisfy the specified performance parameters."
+
+Allow officer to accept/edit/reject.
+
+Do not blindly rewrite clauses.
+
+
+==================================================
+25. COMBINATION / CONFLICT CHECK
+==================================================
+
+Check selected standards for possible conflicts.
+
+Example:
+
+Standard A:
+Testing every 12 months
+
+Standard B:
+Testing every 6 months
+
+Show:
+
+Potential conflict detected
+
+Area:
+Testing frequency
+
+Sources:
+Standard A
+Standard B
+
+Action:
+Officer review required
+
+This feature should be explainable.
+
+
+==================================================
+26. IMPROVED TENDER
+==================================================
+
+Create a professional tender editor.
+
+Show:
+
+ORIGINAL
+vs
+AI PROPOSED
+
+Use diff visualization.
+
+Removed text:
+RED / strikethrough
+
+Added text:
+GREEN
+
+Modified:
+AMBER
+
+Example:
+
+Original:
+"Product should be of good quality."
+
+Proposed:
+"The product shall comply with IS XXXX:2023 and applicable BIS certification requirements."
+
+Buttons:
+Accept
+Edit
+Reject
+
+Only use verified items in final approved tender text.
+
+
+==================================================
+27. OFFICER REVIEW
+==================================================
+
+Every AI recommendation must require human review.
+
+Each recommendation:
+
+AI Recommendation
+Confidence
+Evidence
+Reasoning summary
+Source
+Status
+
+Actions:
+Accept
+Modify
+Reject
+Mark Not Applicable
+
+Never let AI silently finalize an audit.
+
+Display:
+
+"Officer approval required"
+
+Final state:
+AI-assisted
+Human-approved
+
+
+==================================================
+28. AUDIT LOG
+==================================================
+
+Every important action must be logged.
+
+Example:
+
+10:42
+Tender uploaded
+
+10:43
+OCR completed
+
+10:44
+Requirement R-07 extracted
+
+10:45
+IS XXXX recommended
+
+10:46
+Version validated
+
+10:47
+QCO requirement detected
+
+10:48
+Officer modified recommendation
+
+10:49
+Officer approved final clause
+
+Audit log fields:
+
+timestamp
+user
+action
+entity
+before
+after
+reason
+source
+confidence
+
+Allow filtering.
+
+
+==================================================
+29. NATURAL LANGUAGE QUERY / CHAT
+==================================================
+
+Add a contextual assistant.
+
+Title:
+"Ask about this tender"
+
+Examples:
+
+"Which standards apply to the motor?"
+
+"Why was IS XXXX recommended?"
+
+"Which requirements are missing?"
+
+"Is this standard valid for the tender date?"
+
+"Which certification requirements apply?"
+
+"Show all low-confidence recommendations."
+
+"Support:
+English
+Hindi
+mixed Hindi/English"
+
+The assistant must be grounded in:
+- current tender
+- extracted requirements
+- registry
+- audit evidence
+
+It must not invent standards.
+
+
+==================================================
+30. MULTILINGUAL SUPPORT
+==================================================
+
+Support:
+English
+Hindi
+
+Architecture should support additional Indian languages later.
+
+Use multilingual embeddings where appropriate.
+
+Example query:
+
+"LED lamps ke liye kaun se BIS standards lagu hain?"
+
+System:
+- detects Hindi/Hinglish
+- normalizes query
+- retrieves standards
+- responds in selected language
+
+
+==================================================
+31. KNOWLEDGE BASE
+==================================================
+
+Create Knowledge Base module.
+
+Sections:
+
+Standards Registry
+Certification Rules
+QCO Records
+Amendments
+Decision Checklists
+Expert Data
+Tender Examples
+
+Registry record should include:
+
+standard_number
+title
+year
+status
+effective_date
+withdrawal_date
+successor
+amendments
+related_standards
+certification
+official_source
+snapshot_date
+
+Never use an LLM as the authoritative source for registry facts.
+
+
+==================================================
+32. REGISTRY SNAPSHOTS
+==================================================
+
+The system should explicitly show:
+
+"Registry Snapshot:
+30 Sep 2026"
+
+Every audit should store the registry snapshot used.
+
+This provides reproducibility.
+
+Example:
+
+Audit created:
+02 Oct 2026
+
+Registry used:
+30 Sep 2026 snapshot
+
+If registry changes later, the old audit remains reproducible.
+
+
+==================================================
+33. REPORTING
+==================================================
+
+Generate final audit report.
+
+Sections:
+
+1. Executive Summary
+2. Tender Information
+3. Extracted Requirements
+4. Applicable Standards
+5. Allied/Normative Standards
+6. Version Validation
+7. Certification/QCO Analysis
+8. Decision-Point Audit
+9. Coverage & Gap Analysis
+10. Wording Flags
+11. Combination Checks
+12. Officer Decisions
+13. Approved Tender Changes
+14. Evidence
+15. Audit Log
+16. Registry Snapshot
+
+Export:
+- PDF
+- DOCX
+- CSV compliance matrix
+- JSON audit record
+
+If export is not implemented initially, create the backend abstraction for it.
+
+
+==================================================
+34. EVALUATION DASHBOARD
+==================================================
+
+Create a technical evaluation page.
+
+Metrics:
+
+Requirement extraction:
+Precision
+Recall
+
+Standard retrieval:
+Recall@5
+Recall@10
+
+Gap detection:
+Precision
+Recall
+
+Version validation:
+Accuracy
+
+Checklist:
+Precision
+Recall
+
+OCR:
+Confidence
+
+Use actual measured values only.
+
+If no real evaluation data exists:
+display:
+"Evaluation dataset not configured"
+
+Never fabricate metrics.
+
+Include test cases for:
+- fake IS numbers
+- outdated standards
+- missing requirements
+- vague wording
+- conflicting standards
+- certification gaps
+
+
+==================================================
+35. DEMO MODE
+==================================================
+
+This is extremely important.
+
+Create a deterministic Demo Mode.
+
+Sample audits:
+
+1. LED Lighting Procurement
+2. Industrial Control Panels
+3. Campus Water Pumps
+
+For each:
+- 10–20 requirements
+- multiple standard recommendations
+- some gaps
+- some partial coverage
+- certification requirements
+- version mismatch example
+- vague wording
+- allied standards
+- officer decisions
+- audit log
+
+The demo should:
+- load instantly
+- have realistic structured requirements
+- have standards
+- have versions
+- have certification rules
+- have gaps
+- have officer decisions
+- have audit history
+
+Clearly label:
+
+DEMO DATA
+
+Do not present demo standards as live BIS data.
+
+
+==================================================
+36. LANDING PAGE
+==================================================
+
+Create a polished landing page.
+
+Hero:
+
+SPECAUDIT-IS
+
+AI Tender Auditor for Indian Standards
+
+Headline:
+
+"Turn ambiguous tenders into auditable specifications."
+
+Subtext:
+
+"Extract requirements, identify applicable Indian Standards, verify versions and certifications, detect gaps, and produce evidence-linked tender drafts."
+
+Buttons:
+
+Start an Audit
+Try Demo
+
+Three core cards:
+
+EXTRACT
+Convert tender documents into structured requirements.
+
+MATCH
+Identify applicable Indian Standards and related requirements.
+
+AUDIT
+Detect gaps, verify versions, and produce traceable recommendations.
+
+Then:
+How it Works
+
+Tender
+↓
+Requirement Extraction
+↓
+Standard Retrieval
+↓
+Verification
+↓
+Officer Review
+↓
+Auditable Output
+
+
+==================================================
+37. UI / UX DESIGN
+==================================================
+
+The UI must look like a serious government/enterprise procurement application.
+
+Avoid:
+- excessive gradients
+- neon colors
+- gaming UI
+- excessive glassmorphism
+- unnecessary animations
+- huge decorative illustrations
+- clutter
+
+Use:
+- white/off-white surfaces
+- muted blue/indigo/green accents
+- subtle borders
+- clear typography
+- compact data tables
+- status badges
+- cards
+- professional icons
+- consistent spacing
+
+Semantic colors:
+
+GREEN:
+covered / verified / approved
+
+AMBER:
+partial / warning / review
+
+RED:
+gap / invalid / conflict
+
+BLUE:
+information
+
+GRAY:
+neutral / not applicable
+
+Do not use color alone to convey status.
+Also use icons and text.
+
+
+==================================================
+38. AUDIT WORKSPACE UI
+==================================================
+
+Use a persistent left sidebar.
+
+Top:
+Audit name
+Tender ID
+Status
+Registry snapshot
+
+Progress:
+
+01 Requirements
+02 Standards
+03 Version
+04 Certification
+05 Decision Audit
+06 Compliance
+07 Improved Tender
+08 Review
+
+Main content.
+
+Optional right-side AI Explanation Panel.
+
+When user selects a requirement:
+
+RIGHT PANEL:
+
+Requirement
+Standard
+Confidence
+Why selected
+Evidence
+Version
+Certification
+Decision points
+Officer actions
+
+This panel should remain consistent throughout the workflow.
+
+
+==================================================
+39. GLOBAL DESIGN SYSTEM
+==================================================
+
+Create reusable components:
+
+Button
+Badge
+Card
+StatusBadge
+ConfidenceBar
+ProgressBar
+DataTable
+FilterBar
+SearchBox
+EvidenceCard
+RequirementCard
+StandardCard
+AuditTimeline
+DecisionCard
+ReviewPanel
+DiffViewer
+DocumentViewer
+CitationBadge
+RegistryBadge
+EmptyState
+LoadingState
+ErrorState
+Modal
+Drawer
+Tooltip
+
+Do not duplicate UI logic.
+
+
+==================================================
+40. RESPONSIVE DESIGN
+==================================================
+
+Desktop-first because this is a procurement officer dashboard.
+
+Also support:
+- tablet
+- laptop
+- smaller desktop
+
+Mobile does not need to be the primary experience but should remain usable.
+
+
+==================================================
+41. TECHNICAL STACK
+==================================================
+
+Preferred:
+
+Frontend:
+Next.js
+TypeScript
+Tailwind CSS
+shadcn/ui
+
+Backend:
+FastAPI
+Python
+
+Database:
+PostgreSQL
+
+Vector:
+pgvector
+
+Search:
+PostgreSQL full-text search initially
+Architecture should allow OpenSearch later
+
+NLP:
+sentence-transformers
+multilingual-e5
+BGE-M3
+bge-reranker
+
+OCR:
+Tesseract
+PaddleOCR
+
+LLM:
+Provider abstraction.
+Allow API-based model such as Gemini/OpenAI/local model.
+Do not tightly couple application logic to one LLM provider.
+
+Use:
+- Pydantic
+- SQLAlchemy or equivalent
+- proper service/repository architecture
+
+
+==================================================
+42. BACKEND ARCHITECTURE
+==================================================
+
+Use modular services.
+
+Suggested structure:
+
+backend/
+    app/
+        main.py
+
+        api/
+            audits.py
+            requirements.py
+            standards.py
+            retrieval.py
+            certification.py
+            versions.py
+            decision_points.py
+            compliance.py
+            reports.py
+            knowledge.py
+            chat.py
+            evaluation.py
+
+        models/
+            audit.py
+            tender.py
+            requirement.py
+            standard.py
+            amendment.py
+            certification.py
+            decision_point.py
+            checklist.py
+            evidence.py
+            officer_review.py
+            audit_log.py
+
+        services/
+            ingestion/
+            ocr/
+            extraction/
+            retrieval/
+            reranking/
+            standards/
+            versioning/
+            certification/
+            decision_audit/
+            compliance/
+            wording/
+            conflict/
+            report/
+            audit_log/
+
+        repositories/
+        schemas/
+        core/
+        db/
+
+
+==================================================
+43. FRONTEND ARCHITECTURE
+==================================================
+
+Suggested:
+
+frontend/
+    app/
+        dashboard/
+        audits/
+        audits/[id]/
+        audits/[id]/requirements/
+        audits/[id]/standards/
+        audits/[id]/versions/
+        audits/[id]/certification/
+        audits/[id]/decision-audit/
+        audits/[id]/compliance/
+        audits/[id]/improved-tender/
+        audits/[id]/review/
+        standards/
+        is-checker/
+        knowledge/
+        reports/
+        evaluation/
+
+    components/
+        layout/
+        dashboard/
+        audit/
+        requirements/
+        standards/
+        compliance/
+        review/
+        documents/
+        common/
+
+    lib/
+    hooks/
+    types/
+
+
+==================================================
+44. DATABASE MODEL
+==================================================
+
+Create relational models for:
+
+User
+Audit
+Tender
+TenderDocument
+Requirement
+RequirementEvidence
+Standard
+StandardVersion
+Amendment
+StandardRelationship
+CertificationRule
+QCORecord
+Checklist
+ChecklistItem
+DecisionPoint
+RequirementDecisionPoint
+StandardRecommendation
+ComplianceResult
+WordingFlag
+Conflict
+OfficerReview
+ImprovedTender
+AuditLog
+RegistrySnapshot
+
+Important relationships:
+
+Tender → Requirements
+
+Requirement → Evidence
+
+Requirement → Standard Recommendations
+
+Standard → Versions
+
+Standard → Amendments
+
+Standard → Related Standards
+
+Standard → Certification Rules
+
+Requirement → Decision Points
+
+Requirement → Compliance Result
+
+Recommendation → Officer Review
+
+Audit → Audit Log
+
+Audit → Registry Snapshot
+
+
+==================================================
+45. DATA SAFETY / TRUST
+==================================================
+
+Rules:
+
+1. Never hallucinate an Indian Standard.
+2. Never invent standard numbers.
+3. Never invent clauses.
+4. Never claim a standard is active unless registry data says so.
+5. Never claim certification is mandatory without supporting data.
+6. Clearly mark unknown/unverified data.
+7. Store registry snapshot date.
+8. Preserve audit reproducibility.
+9. Keep officer approval explicit.
+10. Never silently modify approved content.
+
+Use states:
+
+VERIFIED
+UNVERIFIED
+UNKNOWN
+DEMO
+OUTDATED
+WITHDRAWN
+REQUIRES_REVIEW
+
+
+==================================================
+46. COPYRIGHT
+==================================================
+
+Do not store or reproduce full copyrighted BIS standards text.
+
+Store:
+- metadata
+- standard number
+- title
+- year
+- status
+- amendment facts
+- clause identifiers
+- evidence pointers
+- official source URLs
+- registry facts
+
+When displaying source information:
+show concise factual references and links to official sources.
+
+Respect copyright.
+
+
+==================================================
+47. ERROR HANDLING
+==================================================
+
+Design clear states:
+
+Loading
+Processing
+Low confidence
+No standard found
+Registry unavailable
+OCR failed
+Partial extraction
+Unverified standard
+Missing certification data
+API unavailable
+LLM unavailable
+
+Never silently fail.
+
+If AI is unavailable:
+allow manual registry search and review.
+
+
+==================================================
+48. API DESIGN
+==================================================
+
+Create REST APIs for:
+
+POST /audits
+GET /audits
+GET /audits/{id}
+
+POST /audits/{id}/documents
+
+POST /audits/{id}/extract
+
+GET /audits/{id}/requirements
+
+POST /requirements/{id}/retrieve
+
+GET /requirements/{id}/standards
+
+POST /standards/check-version
+
+POST /standards/check-certification
+
+POST /audits/{id}/decision-audit
+
+GET /audits/{id}/compliance
+
+POST /audits/{id}/wording-analysis
+
+POST /audits/{id}/conflict-check
+
+POST /audits/{id}/improved-tender
+
+POST /reviews
+
+GET /audits/{id}/audit-log
+
+GET /standards/search
+
+GET /standards/{id}
+
+GET /is-checker
+
+POST /chat
+
+GET /evaluation
+
+
+==================================================
+49. SEARCH
+==================================================
+
+Support:
+
+Exact search
+Keyword search
+Semantic search
+Hybrid search
+Filters
+
+Filters:
+- standard number
+- year
+- status
+- product
+- category
+- certification
+- active/withdrawn
+
+
+==================================================
+50. PERFORMANCE
+==================================================
+
+For demo mode:
+prefer deterministic local data.
+
+For real AI:
+show loading/progress.
+
+Do not block entire UI while one component processes.
+
+Use:
+- streaming where useful
+- caching
+- background jobs where appropriate
+- pagination
+- debounced search
+
+
+==================================================
+51. SECURITY
+==================================================
+
+Use:
+- environment variables
+- no API keys in frontend
+- server-side API calls
+- validation
+- file size limits
+- allowed file types
+- safe document handling
+- input sanitization
+
+
+==================================================
+52. ACCESSIBILITY
+==================================================
+
+Use:
+- keyboard navigation
+- visible focus states
+- semantic HTML
+- accessible tables
+- labels for icons
+- sufficient contrast
+- status text in addition to colors
+
+
+==================================================
+53. DEMO DATA
+==================================================
+
+Create realistic but clearly synthetic/demo datasets.
+
+Include at least:
+
+LED Lighting
+Industrial Control Panels
+Campus Water Pumps
+
+For each:
+- 10–20 requirements
+- multiple standard recommendations
+- some gaps
+- some partial coverage
+- certification requirements
+- version mismatch example
+- vague wording
+- allied standards
+- officer decisions
+- audit log
+
+The demo should show both successful and problematic cases.
+
+
+==================================================
+54. DEMO SCENARIO
+==================================================
+
+Create a perfect SIH demo path.
+
+Scenario:
+
+LED Lighting Procurement
+
+Step 1:
+Upload sample tender.
+
+Step 2:
+Show OCR and extraction.
+
+Step 3:
+Show 17 extracted/decision requirements.
+
+Step 4:
+Open a requirement.
+
+Step 5:
+Show recommended standard.
+
+Step 6:
+Show hybrid retrieval/confidence.
+
+Step 7:
+Show allied/normative standards.
+
+Step 8:
+Show version validation.
+
+Step 9:
+Show QCO/BIS certification check.
+
+Step 10:
+Show DPCA.
+
+Step 11:
+Show missing decision points.
+
+Step 12:
+Show compliance matrix.
+
+Step 13:
+Show vague wording.
+
+Step 14:
+Show improved tender diff.
+
+Step 15:
+Officer approves.
+
+Step 16:
+Show audit log.
+
+Step 17:
+Generate final report.
+
+The demo should take approximately 5–8 minutes.
+
+
+==================================================
+55. IMPORTANT PRODUCT POSITIONING
+==================================================
+
+Do not position this as:
+
+"AI that decides which standards to use."
+
+Position it as:
+
+"AI-assisted tender auditing and Indian Standards recommendation with evidence, verification, and human approval."
+
+Key message:
+
+AI assists.
+Registry verifies.
+Officer decides.
+Audit log records.
+
+
+==================================================
+56. IMPLEMENTATION PRIORITY
+==================================================
+
+Build in phases.
+
+PHASE 1:
+- project setup
+- database
+- layout
+- dashboard
+- audit creation
+- demo data
+- existing 8-step workflow
+
+PHASE 2:
+- document ingestion
+- requirement extraction
+- requirement UI
+- evidence
+
+PHASE 3:
+- standard retrieval
+- hybrid search
+- reranking
+- standard UI
+
+PHASE 4:
+- version validation
+- amendments
+- certification/QCO
+- IS Checker
+
+PHASE 5:
+- Decision-Point Audit
+- checklist engine
+- coverage/gap analysis
+- compliance matrix
+
+PHASE 6:
+- wording flags
+- conflict detection
+- improved tender
+- diff editor
+
+PHASE 7:
+- officer review
+- audit log
+- reports
+- export
+
+PHASE 8:
+- multilingual
+- contextual chat
+- evaluation dashboard
+- knowledge base
+
+
+==================================================
+57. DO NOT OVERBUILD
+==================================================
+
+Do not build:
+- unnecessary social features
+- generic chatbot pages
+- unrelated AI features
+- recommendation systems unrelated to procurement
+- unnecessary animations
+- fake government integrations
+- fake live BIS API
+- fake evaluation numbers
+- fake certification data
+
+Every feature must support the SIH problem statement.
+
+
+==================================================
+58. FINAL QUALITY BAR
+==================================================
+
+The finished application should feel like:
+
+"An enterprise procurement intelligence and audit platform"
+
+not:
+
+"A college AI project."
+
+It should demonstrate three things immediately:
+
+1. INTELLIGENCE
+The system understands tender requirements.
+
+2. VERIFICATION
+The system checks standards, versions, certification, evidence, and gaps.
+
+3. ACCOUNTABILITY
+The officer reviews and approves every important AI recommendation.
+
+The UI must make these three concepts visually obvious.
+
+
+==================================================
+59. FINAL NAVIGATION
+==================================================
+
+Sidebar:
+
+Dashboard
+New Audit
+My Audits
+
+AUDIT WORKSPACE
+Requirements
+Standards
+Version & Certification
+Decision-Point Audit
+Tender Audit
+Compliance Matrix
+Improved Tender
+Final Review
+
+KNOWLEDGE
+Standards Registry
+IS Checker
+Knowledge Base
+
+SYSTEM
+Reports
+Evaluation
+Audit Log
+Settings
+
+
+==================================================
+60. FINAL DESIGN PHILOSOPHY
+==================================================
+
+The most important interaction is:
+
+Requirement
+→ Why?
+→ Which Standard?
+→ Why this Standard?
+→ Is the Version valid?
+→ Is Certification required?
+→ What evidence supports it?
+→ What decision point is covered?
+→ What is missing?
+→ What should change?
+→ Did the officer approve it?
+
+Build the product around this interaction.
+
+The user should never see an unexplained AI recommendation.
+
+Every important recommendation should have:
+
+Recommendation
+Confidence
+Evidence
+Source
+Verification status
+Officer action
+
+Build the application incrementally, keep the architecture clean, use reusable components, and make sure the application runs after each phase.
+
+Start by creating the complete project structure, database schema, design system, routing, and demo data.
+
+Then implement the dashboard and core audit workflow.
+
+Do not attempt to implement all AI functionality with hardcoded fake logic. Create clean service interfaces and use deterministic demo implementations where external AI/registry infrastructure is not available.
+
+When a real AI/registry integration is unavailable, clearly label the implementation as DEMO and keep the architecture ready for the real service.
+
+The final result must be coherent, polished, technically credible, and aligned with SIH26108.
